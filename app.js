@@ -14,6 +14,8 @@ const shortid = require("shortid");
 dotenv.config();
 let app = express();
 
+const PORT = process.env.PORT || 3000;
+
 const instance = new Razorpay({
   key_id: process.env.KEY_ID,
   key_secret: process.env.KEY_SECRET,
@@ -74,6 +76,6 @@ app.post("/api/payment/verify", (req, res) => {
     response = { status: "success" };
   res.send(response);
 });
-app.listen("3000", () => {
+app.listen(PORT, () => {
   console.log("server started");
 });
